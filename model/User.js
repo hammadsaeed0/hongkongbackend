@@ -70,15 +70,15 @@ const userSchema = new Schema({
   },
   currency: {
     type: String,
-    required: true,
+    // required: true,
   },
   services: {
     type: Object,
-    required: true,
+    // required: true,
   },
   extraServices: {
     type: String,
-    required: true,
+    // required: true,
   },
 });
 
