@@ -13,49 +13,9 @@ cloudinary.v2.config({
 // Register Buyer
 export const Register = catchAsyncError(async (req, res, next) => {
   try {
-    const {
-      username,
-      email,
-      password,
-      phone,
-      website,
-      name,
-      city,
-      about,
-      gender,
-      country,
+    const { email, password, phone } = req.body;
 
-      ethnicity,
-      look,
-      hairLength,
-      bustSize,
-      availability,
-      currency,
-      services,
-      extraServices
-    } = req.body;
-
-    const requiredFields = [
-      'username',
-      'email',
-      'password',
-      'phone',
-      'website',
-      'name',
-      'city',
-      'about',
-      'gender',
-      'country',
-
-      'ethnicity',
-      'look',
-      'hairLength',
-      'bustSize',
-      'availability',
-      'currency',
-      'services',
-      'extraServices'
-    ];
+    const requiredFields = ['email', 'password', 'phone'];
 
     const missingFields = requiredFields.filter(field => !req.body[field]);
 
@@ -74,24 +34,9 @@ export const Register = catchAsyncError(async (req, res, next) => {
 
     // Create new user
     const newUser = new User({
-      username,
       email,
       password: hashedPassword,
-      phone,
-      website,
-      name,
-      city,
-      about,
-      gender,
-      country,
-      ethnicity,
-      look,
-      hairLength,
-      bustSize,
-      availability,
-      currency,
-      services,
-      extraServices
+      phone
     });
 
     // Save the user to the database
@@ -103,6 +48,7 @@ export const Register = catchAsyncError(async (req, res, next) => {
     res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
+
 
 // Login Buyer
 export const Login = catchAsyncError(async (req, res, next) => {
