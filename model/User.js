@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: {
     type: String,
-    required: true,
+    // required: true,
   },
   image:{
     type: String
@@ -25,48 +25,48 @@ const userSchema = new Schema({
   },
   website: {
     type: String,
-    required: true,
+    // required: true,
   },
   name: {
     type: String,
-    required: true,
+    // required: true,
   },
   city: {
     type: String,
-    required: true,
+    // required: true,
   },
   about: {
     type: String,
-    required: true,
+    // required: true,
   },
   gender: {
     type: String,
-    required: true,
+    // required: true,
   },
   country: {
     type: String,
-    required: true,
+    // required: true,
   },
 
   ethnicity: {
     type: String,
-    required: true,
+    // required: true,
   },
   look: {
     type: String,
-    required: true,
+    // required: true,
   },
   hairLength: {
     type: String,
-    required: true,
+    // required: true,
   },
   bustSize: {
     type: String,
-    required: true,
+    // required: true,
   },
   availability: {
     type: String,
-    required: true,
+    // required: true,
   },
   currency: {
     type: String,
