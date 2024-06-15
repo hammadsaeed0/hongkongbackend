@@ -56,6 +56,10 @@ const userSchema = new Schema({
     type: String,
     // required: true,
   },
+  age: {
+    type: String,
+    // required: true,
+  },
   hairLength: {
     type: String,
     // required: true,
