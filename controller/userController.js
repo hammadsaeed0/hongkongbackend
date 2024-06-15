@@ -134,9 +134,28 @@ export const UpdateProfile = catchAsyncError(async (req, res, next) => {
     res.status(200).json({ success: true, user: updatedUser });
   } catch (error) {
     console.error('Error updating user profile:', error);
-    res.status(500).json({ success: false, error: 'Internal server error' });
+
+    // Custom error handling based on the type of error
+    if (error.name === 'ValidationError') {
+      // Handle validation errors
+      return res.status(400).json({ success: false, error: 'Validation Error', details: error.errors });
+    }
+
+    if (error.name === 'CastError' && error.kind === 'ObjectId') {
+      // Handle invalid ObjectId errors
+      return res.status(400).json({ success: false, error: 'Invalid User ID format' });
+    }
+
+    if (error.name === 'MongoError' && error.code === 11000) {
+      // Handle duplicate key errors
+      return res.status(409).json({ success: false, error: 'Duplicate key error', details: error.keyValue });
+    }
+
+    // Generic error response for other types of errors
+    res.status(500).json({ success: false, error: 'An unexpected error occurred', details: error.message });
   }
 });
+
 
 
 // Update profile API
